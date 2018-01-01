@@ -1,0 +1,47 @@
+su
+
+find / -iname "lgpl-3"
+
+cd /usr/share/common-licenses/
+
+cp LGPL-3 /home/student/
+
+cd ~
+
+mv LGPL-3 LGPL-3-COPY
+
+cat LGPL-3-COPY
+
+cut -d: -f1 /etc/passwd
+
+cat /etc/shells
+
+find /type d -name 'passwd'
+
+cat /home/student/LGPL-3-COPY | head -15
+
+cat /home/student/LGPL-3-COPY | tail -15
+
+cat /home/student/LGPL-3-COPY | grep -c 'library'
+
+cat /home/student/LGPL-3-COPY | grep -v 'public'
+
+cat /home/student/LGPL-3-COPY | grep -A 2 'library'
+
+cat /home/student/LGPL-3-COPY | grep -B 3 'library'
+
+cat /home/student/LGPL-3-COPY | grep -C 5 'public'
+
+grep -v '^#' /etc/ssh/sshd_config | sort -h | uniq -u
+
+cd /var/log/
+
+ls -lh | grep $'.gz'
+
+find . -type f -name 'syslog' | grep '[0-9]'
+
+find . -type f | grep sys???
+
+touch 100 200 300
+
+ls -lh [0-9]*

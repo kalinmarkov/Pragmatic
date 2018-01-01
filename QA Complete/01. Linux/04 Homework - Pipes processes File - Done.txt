@@ -1,0 +1,37 @@
+cd /var/log/ 
+
+ls -lha > ~/file-list
+
+cd /etc/
+
+ls -lha >> ~/file-list
+
+cd ~
+
+cat file-list
+
+ls -lha ~ ~/nosuchdir 2> /dev/null
+
+ls -lha ~ ~/nosuchdir 1> /dev/null
+
+ls -lha ~ ~/nosuchdir > /dev/null 2>&1
+
+su student
+
+cp shadow ~/log-list 2> /dev/null
+
+sleep 10000 &
+
+sleep 20000 &
+
+sleep 30000 &
+
+ps aux
+
+fg % 1083
+
+^C
+
+top
+
+ps aux | grep sleep | kill 1081 1082 1083

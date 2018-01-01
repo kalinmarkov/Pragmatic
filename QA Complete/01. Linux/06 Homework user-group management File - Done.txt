@@ -1,0 +1,71 @@
+addgroup pragmatic
+
+usermod -a -G pragmatic root
+
+mkdir /Projects
+
+chgrp pragmatic /Projects
+
+ls -lha /
+
+chmod 770 /Projects
+
+ls -lha/
+
+useradd ivan
+
+useradd georgi
+ 
+useradd stoyan
+
+cat /etc/passwd
+
+mkdir /home/ivan /home/geoirgi /home/stoyan
+
+ls -lha /home
+
+chown ivan /home/ivan
+
+ls -lha /home
+
+chown georgi /home/georgi
+
+chown stoyan /home/stoyan
+
+chsh -s /bin/bash ivan
+
+cat /etc/passwd
+
+chsh -s /bin/bash georgi
+
+chsh -s /bin/bash stoyan
+
+passwd ivan
+
+qaz123WSX
+
+qaz123WSX
+
+passwd georgi
+
+qaz123WSX
+
+qaz123WSX
+
+passwd stoyan
+
+qaz123WSX
+
+qaz123WSX
+
+umask 0007
+
+usermod -a -G pragmatic ivan
+
+usermod -a -G pragmatic georgi
+
+usermod -a -G pragmatic stoyan
+
+chmod 776 -R /Projects
+
+chmod g+s /Projects

@@ -1,0 +1,75 @@
+1.	Влезте във вашата система като потребител student 
+
+2.	Разберете къде се намирате в момента
+	pwd
+
+3.	Вижте какви файлове/директории има в текущата директория
+	ls
+
+4.	Създайте директория “temp”
+	mkdir temp
+
+5.	Вижте какви файлове/директории има в “temp”
+	cd temp
+	ls -lh или ls -lha (. и .. не ги броим)
+
+6.	Създайте директория в “temp” с име “projects”
+	mkdir projects
+
+7.	Вижте какви файлове/директории има в “projects”
+	cd projects
+	ls -lh или ls -lha (. и .. не ги броим)
+
+8.	Създайте файл “temp-file” в директорията “temp” 
+	cd ..
+	touch temp-file
+	
+9.	Преименувайте директорията “temp”на “homework”
+	cd ..
+	mv temp homework
+
+10.	Влезте в папката “projects”
+	cd homework/projects
+
+11.	Разберете къде се намирате в момента
+	pwd
+
+12.	Вижте какви файлове/директории има в текущата директория (long format)
+	ls -lha
+
+13.	Копирайте файла “temp-file” в “projects”
+	cd ..
+	cp temp-file /home/student/homework/projects
+	
+14.	Влезте във вашата “Home directory”
+	cd
+
+15.	Разберете къде се намирате в момента
+	pwd
+
+16.	Вижте какви файлове/директории в “projects”
+	cd homework/projects
+	ls
+
+17.	Изтрийте файла temp-file от директорията “homework”
+	cd ..
+	rm temp-file
+
+18.	Вижте какви файлове/директории има в директорията “homework”
+	ls -lha
+	
+19.	Вижте какви файлове/директории има в директорията “projects”
+	cd projects
+	ls -lha
+	
+20.	Копирайте папката “projects” с ново име “projects_backup” в директорията “homework”
+	cd ..
+	cp -r projects projects_backup
+
+21.	Изтрийте цялата папка “projects” от “homework”
+	rm -r projects
+
+Допълнителна домашна: 
+
+1. 	Направе си свой собствен PS1 промпт
+	PS1 = 

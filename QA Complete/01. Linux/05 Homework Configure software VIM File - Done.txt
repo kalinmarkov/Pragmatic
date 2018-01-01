@@ -1,0 +1,15 @@
+#Software
+
+apt-get install apache2
+
+dpkg -l
+
+apt-get remove apache2 -y
+
+apt-get install libncurses-dev
+
+
+
+#VIM
+
+vimtutor 
