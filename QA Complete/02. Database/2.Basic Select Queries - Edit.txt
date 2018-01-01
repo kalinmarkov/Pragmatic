@@ -1,0 +1,106 @@
+-- 1. retrieve name and salary increased by 10% of all employees
+
+select name, salary*1.1 
+from employees
+
+-- 2. retrieve the name and email of all employees that don't have manager 
+
+select name, email 
+from employees 
+where managerid is null
+
+-- 3. retrieve all skills that contain the word 'Java'
+
+select * 
+from skills 
+where name like '%java%'
+
+-- 4. retrieve all vacations with a status of 'PENDING'
+
+select * 
+from vacations 
+where status = 'PENDING'
+
+-- 5. retrieve the names and salaries of all employees that have a salary of less than 1000 or exactly 2000
+
+select name, salary 
+from employees  
+where salary < 1000 or salary = 2000
+
+-- 6. retrieve the names of the first 10 employees that joined the company
+
+select name
+from employees
+order by hiredate
+limit 10
+
+-- 7. retrieve the names of the last 10 employees that joined the company
+
+select name
+from employees
+order by hiredate desc
+limit 10
+
+-- 8. retrieve the alias and name of all titles combined in the column TitleInfo in the format '[alias]_name'
+
+select concat('[', alias, ']_', name) as TitleInfo
+from titles
+
+-- 9. retrieve the IDs, 'from' and 'to' dates of all employees that have requested a vacation in 2013 - combine the result in a single column with name 'record' in the format 'id:from-to'
+
+select concat(EmployeeId, ':', FromDate, '-', ToDate) as record
+from vacations 
+where (FromDate between '2013-01-01' and '2013-12-31')
+and (ToDate between '2013-01-01' and '2013-12-31')
+
+-- 10. retrieve the names of all vendors whose name starts with 'M'
+
+select name
+from vendors
+where name like 'M%'
+
+-- Please correct the following SQL statement:
+
+-- 11. retrieve id and name of all certificate
+
+select id, name
+from certificates
+
+-- 12. retrieve all of titles
+
+select *
+from titles
+
+-- 13. retrieve all employees with email that contain 'spetrov'
+
+select *
+from employees
+where email like '%spetrov%'
+
+-- 14. Why following sql statement return 0 rows ?
+select *
+from employees 
+where cv = null
+
+because we have to change '=' with 'is' to correct the syntax
+
+select *
+from employees 
+where cv is null
+
+-- 15. retrieve the last 7 requested vacations
+
+select *
+from vacations
+order by RequestDate desc
+limit 7
+
+-- 16. select all interviews with a score of 4 or 5 
+
+select *
+from interviews
+where score = 4 or score = 5
+
+-- 17. Print the name Ivan Ivanov
+
+select 'Ivan Ivanov'

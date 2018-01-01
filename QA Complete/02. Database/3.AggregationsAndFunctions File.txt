@@ -1,0 +1,249 @@
+-- select the average salary of all employees
+select avg(salary) from employees
+
+-- select the maximum salary of all employees
+select max(salary) from employees
+
+-- select the minimum salary of employees from department 5
+select min(salary) 
+from employees
+where departmentid = 5
+
+-- count number of employees
+select count(*) from employees;
+
+select count(1) from employees;
+
+select count(id) from employees;
+
+
+
+
+-- count number of employees with a manager (2)
+select count(1)
+from employees
+where ManagerId is not null;
+
+select count(ManagerId)
+from employees;
+
+
+-- count number of managers
+select count(distinct ManagerId)
+from employees ;
+
+
+-- count number of employees in departments with average salary higher than 2000
+
+select departmentid , count(id)
+from employees
+group by departmentid
+having avg(salary) > 2000
+
+
+
+
+-- inserts 'Name' after position 5 in 'First' replacing 0 characters from 'First'
+-- 'FirstName'
+SELECT INSERT('First', 5, 0, 'Name');
+
+-- position of 'am' in 'Name' is 2
+SELECT INSTR('Name', 'am');
+
+-- 'name'
+SELECT LOWER('Name');
+
+-- 'NAME'
+SELECT UPPER('Name');
+
+-- length of 'Name' is 4
+SELECT LENGTH('Name'); 
+
+-- position of 'am' in 'Name' is 2
+SELECT POSITION('am' in 'Name'); 
+SELECT LOCATE('am', 'Name'); 
+
+-- Repeats 'Name' three times
+-- 'NameNameName'
+SELECT REPEAT('Name', 3)
+
+-- fills 'Value' on the left with the given character
+-- #####Value
+SELECT LPAD('Value', 10, '#');
+SELECT RPAD('Value', 10, '#');
+
+-- removes spaces on the left from the given string
+-- 'Value   '
+SELECT LTRIM('   Value   ');
+
+-- removes spaces on the right from the given string
+-- '   Value'
+SELECT RTRIM('   Value');
+
+-- removes empty spaces on the left and right of the given string
+SELECT TRIM('   Value   ');
+
+-- removes the specified character from the beginning and end of a string
+-- 'Value'
+SELECT TRIM(BOTH '#' from '##VALUE###');
+
+-- removes the specified character from the beginning of a string
+-- 'Value###'
+SELECT TRIM(LEADING '#' from '##VALUE###');
+
+-- removes the specified character from the end of a string
+-- '##Value'
+SELECT TRIM(TRAILING '#' from '##VALUE###');
+
+-- retrieve the substring starting at position 3
+-- 'lue'
+SELECT MID('Value', 3);
+
+-- return ASCII code of character
+SELECT ORD('a');
+
+-- return ASCII code of first character ('b')
+SELECT ORD('bbc');
+
+-- quotes a string
+-- 'Value'
+SELECT QUOTE('Value');
+
+-- returns a string of 7 spaces 
+-- '       '
+SELECT SPACE(7);
+
+-- concatenates 'First' with 'Name'
+-- 'FirstName'
+SELECT CONCAT('First', 'Name');
+
+-- returns a substring from the given string
+-- 'alu'
+SELECT SUBSTR('Value', 2,3);
+-- 'lue'
+SELECT SUBSTR('Value', 2);
+-- 'ue'
+SELECT SUBSTR('Value', -2);
+
+-- replace 'Val' with 'h' in 'Value'
+-- 'hue'
+SELECT REPLACE('Value', 'Val', 'h');
+
+-- 'b' is greater than 'a'
+-- 1
+SELECT STRCMP('b', 'a');
+
+-- 'a' is greater than 'b'
+-- -1
+SELECT STRCMP('a', 'b');
+
+-- 'a' is equal to 'a'
+SELECT STRCMP('a', 'a');
+
+-- reverses a string
+-- 'eulaV'
+SELECT REVERSE('Value');
+
+-- returns the absolute value of a number
+-- '123.567'
+SELECT ABS(-123.567);
+
+-- returns the smallest integer number greater that the given
+-- 124
+SELECT CEIL(123.567);
+
+-- returns the greatest integer number less that the given
+-- 123
+SELECT CEIL(123.567);
+
+-- raises 2 to the power of 3
+-- 8
+SELECT POW(2, 3);
+
+-- integer division
+-- 8
+SELECT 8 DIV 3;
+
+-- modulus of integer division
+-- 2
+SELECT 8 MOD 3;
+
+-- rounds a number with a given precision
+-- 123
+SELECT ROUND(123.567);
+-- 123.6
+SELECT ROUND(123.567, 1);
+
+-- rounds a number with a given precision
+-- 123
+SELECT TRUNCATE(123.567, 1);
+
+-- returns the square root of a number
+SELECT SQRT(9);
+
+-- adds a time interval to a given date
+SELECT ADDDATE('2014-01-01', INTERVAL 40 DAY);
+
+-- adds a time to a given timestamp
+SELECT CAST(ADDTIME('2007-12-31 23:59:59.999999', '1 1:1:1.000002') AS CHAR);
+
+-- return the current date
+SELECT CURDATE();
+
+-- returns the year of a given date
+SELECT YEAR('2011-01-01');
+
+-- formats the current date according to the specified format
+SELECT DATE_FORMAT(CURDATE(), '%D:%M:%Y');
+
+-- returns day of month
+SELECT DAY(CURDATE());
+
+-- returns day of month
+SELECT DAYOFMONTH(CURDATE());
+
+-- extracts a unit from a date
+SELECT EXTRACT(YEAR FROM CURDATE());
+
+-- extracts month from date
+SELECT MONTH(CURDATE());
+
+-- extracts minute from time
+SELECT MINUTE(CURTIME());
+
+-- extracts hour from time
+SELECT HOUR(CURTIME());
+
+-- return the first non-null value or NULL if all of them are NULL
+SELECT COALESCE(NULL, NULL, 'VALUE1', 'VALUE2');
+
+-- return the first null value
+SELECT ISNULL('VALUE');
+
+-- return the greatest value
+SELECT GREATEST(11,5, 14);
+
+-- return the smallest value
+SELECT LEAST(11, 5, 14);
+
+-- if MANAGERID is null then '(no manager)' else MANAGERID
+SELECT IF(MANAGERID IS NULL,'(no manager)', MANAGERID) FROM EMPLOYEES;
+
+-- if MANAGERID is null then '(no manager)' else MANAGERID
+SELECT IFNULL(MANAGERID, '(no manager)') FROM EMPLOYEES;
+
+-- if '1' == '2' then NULL else '1'
+SELECT NULLIF('1', '2');
+
+
+-- casts 123 to a string
+SELECT CAST(123 AS CHAR);
+
+-- formats 123.55 to 1 character after the decimal point
+SELECT FORMAT(123.55, 1);
+
+-- formats 123.55 to a whole number
+SELECT FORMAT(123.55, 0);
+
+-- converts a string to a date based on the given format mask
+SELECT STR_TO_DATE('2011-11-11', '%Y-%m-%d');

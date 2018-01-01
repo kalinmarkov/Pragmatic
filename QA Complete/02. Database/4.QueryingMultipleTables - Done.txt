@@ -1,0 +1,95 @@
+-- 1. Print the names of the departments and the number of employees in each of them
+
+select d.Name as DeparmentName, count(e.Id) as NumberOfEmployees
+from departments as d
+left join employees as e on e.DepartmentId = d.Id
+group by d.Name
+
+-- 2. Print the names of the departments with more than 2 employees
+
+select d.Name as DeparmentName
+from departments as d
+join employees as e on e.DepartmentId = d.Id
+group by d.Name
+having count(e.Id) > 2
+
+-- 3. Print the total amount of salaries given to employees for each department
+
+select d.Name as DeparmentName, sum(e.Salary)
+from departments as d
+left join employees as e on e.DepartmentId = d.Id
+group by d.Name
+
+-- 4. Print the number of employees that have at least one vacation request in 2012
+
+select count(distinct EmployeeId)
+from vacations
+where (year(requestDate) = 2012 or year(requestDate) = 2012)
+
+-- 5. Print the names of all employees that have a first name starting with the letter 'M' and last name starting with the letter 'P' 
+
+select name
+from employees
+where name like 'M% P%'
+
+-- 6. Print the names of the employees that have a Microsoft certificate
+
+select distinct e.name as EmployeeName, v.Name as CertificateByCompany
+from employees as e
+join employee_certificates as ec on e.id = ec.EmployeeId
+join certificates as c on c.id = ec.CertificateId
+join vendors as v on v.Id = c.VendorId
+where v.Name = 'Microsoft'
+
+-- 7. Print the names of all job titles in the company along with the number of job positions currently opened.
+
+select t.Name as TitleName, count(jp.Description)
+from titles as t
+left join job_positions as jp on jp.TitleId = t.Id
+group by t.Name
+
+-- 8. Print the number of vacation requests older than two year from the current date
+
+select count(*)
+from vacations
+where RequestDate < adddate(now(), interval -2 year)
+
+-- 9. Print the number of vacations requested between 2008 and 2012
+
+select count(*)
+from vacations
+where year(requestDate) >= 2008 and year(requestDate) <= 2012
+
+-- 10. Print the number of vacations that have more than 10 days for 2012
+
+select count(*)
+from vacations
+where status = 'APPROVED' 
+and (datediff(ToDate, FromDate) > 10)
+and ((year(FromDate) = 2012 or year(ToDate) = 2012) 
+or (year(FromDate) < 2012 and year(ToDate) >= 2012))
+
+-- 11. Print the number of vacations per department per years requested between 2008 and 2012 along with the name of the department
+
+select year(RequestDate), d.Name, count(d.Name)
+from departments as d
+left join employees as e on e.DepartmentId = d.Id
+left join vacations as v on v.EmployeeId = e.Id
+where year(RequestDate) between 2008 and 2012
+group by d.Name
+order by RequestDate
+
+-- 12. Print all departments without employees
+
+select d.*
+from departments as d
+left join employees as e on e.DepartmentId = d.Id 
+where e.Id is null
+group by e.Name
+
+-- 13. Print the names of the candidates that have an interview score which is higher than the average for the company
+
+select distinct jc.name 
+from interviews as i
+join job_candidates as jc on i.CandidateId = jc.Id
+where Score > (select avg(Score) from interviews)
